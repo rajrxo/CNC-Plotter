@@ -1,44 +1,70 @@
-# CNC Hershey Font (Single Line Font) Tool
+# CNC Single‑Line Text Tool
 
-[View the Tool here](https://msurguy.github.io/cnc-text-tool/)
+[Open the tool](https://msurguy.github.io/cnc-text-tool/) — design clean, single‑stroke text for pen plotters, laser engravers, and CNC machines right in your browser.
 
-This browser-based tool enables you to quickly create single line text for plotters, laser engraving, CNC Mills or other computerized machines. The tool doesn't need any software to be installed and makes it quick to experiment with various single line fonts to get the best result. 
+This app lets you lay out multi‑line, single‑line (Hershey/engraving) text on top of an SVG, tweak spacing and alignment, and export a ready‑to‑cut SVG. No installs, no sign‑ups — everything runs locally in your browser.
 
-This tool was made by Maks Surguy, creator of [Drawingbots.net](https://drawingbots.net/) and [Plotterfiles.com](https://plotterfiles.com/). 
+Made by Maks Surguy, creator of [Drawingbots.net](https://drawingbots.net/) and [Plotterfiles.com](https://plotterfiles.com/). More tools: https://drawingbots.net/knowledge/tools
 
-You can find more browser-based tools on https://drawingbots.net/knowledge/tools
+## Highlights
 
-## Fonts and their licenses:
+- Single‑line fonts: Built for plotting, vector engraving, and V‑carving.
+- Multi‑layer text: Add, select, and manage multiple text layers.
+- Precision controls: Font size, line height, character spacing, alignment, rotation, and color inversion (black/white).
+- SVG background: Upload an existing SVG as your canvas to position text exactly where you need it.
+- Direct manipulation: Drag to move, rotate/scale with handles, or nudge with arrow keys.
+- Clean export: Downloads a flattened, stroke‑only SVG with round caps — perfect for CAM or plotting software.
+- Private by design: Runs entirely in your browser; no files are uploaded.
 
-The fonts that were used to make this tool come from the following sources:
+## Quick Start
+
+1. Open the live tool: https://msurguy.github.io/cnc-text-tool/
+2. (Optional) Upload an SVG of your workpiece or design ("Upload File").
+3. Add a text layer and type your text.
+4. Pick a single‑line font and adjust size, spacing, line height, alignment, and rotation.
+5. Position text by dragging on the canvas or entering exact X/Y.
+6. Download your SVG (toggle "text only" if you don’t want the background included).
+
+## Keyboard Shortcuts
+
+- Esc: Deselect selection
+- Arrow keys: Nudge selected layer (hold Shift for 10×)
+- Cmd/Ctrl+Z: Undo
+- Shift+Cmd/Ctrl+Z or Cmd/Ctrl+Y: Redo
+- R: Reset rotation
+- + / −: Increase / decrease font size (hold Shift for larger steps)
+
+## Exporting
+
+- Exported files are standard SVGs containing stroke‑only paths, scaled to your document units, with `stroke-linecap=round` for smooth pen/laser motion.
+- Use "text only" to export just the text (no background) when your CAM/plotter software handles the rest of the layout.
+- If your workflow needs DXF or another format, import the SVG into Inkscape/Illustrator or convert with your preferred tool.
+
+## Fonts and Licensing
+
+The bundled single‑line fonts are sourced from:
 
 - https://gitlab.com/oskay/svg-fonts
 - https://github.com/isdat-type/Relief-SingleLine
 - http://cutlings.wasbo.net/products-fonts/
 - https://github.com/Shriinivas/inkscapestrokefont
 
-If you are downloading or thinking of redistributing the fonts, please consult with the original repositories for each of the fonts to understand respective licensing model. 
+Please review the original repositories for each font’s license before redistributing fonts. The code in this repo is MIT‑licensed; fonts retain their respective licenses (often embedded in the SVG font files).
 
 ## Development
 
-### Project install
-```
-npm install
-```
+- Install deps: `npm install`
+- Start dev server: `npm run dev`
+- Build for production (outputs to `docs/`): `npm run build`
+- Preview production build: `npm run preview`
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Project layout:
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Entry: `index.html`
+- React app: `src/react/**`
+- Static assets and fonts: `public/` (fonts under `public/fonts/**`)
+- Vite config: `vite.config.js`
 
 ## License
 
-The code for the text tool is licensed under MIT license. The fonts all have their own licenses, usually embedded in the font SVG files.
+Code: MIT. Fonts: see their respective licenses in the source repositories and/or embedded in the font SVGs.

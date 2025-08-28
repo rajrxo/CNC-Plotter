@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import BackgroundSvg from './components/BackgroundSvg.jsx'
 import TextOverlay from './components/TextOverlay.jsx'
 import Controls from './components/Controls.jsx'
+import AboutModal from './components/AboutModal.jsx'
 import useEditorStore from './store/useEditorStore.js'
 
 export default function App() {
@@ -143,7 +144,7 @@ export default function App() {
         <div className="footer-wrapper">
           <div className="footer">
             <h3>CNC Text Editor</h3>
-            <p>Project by <a target="_blank" rel="noreferrer" href="http://twitter.com/msurguy">@msurguy</a> (<a target="_blank" rel="noreferrer" href="http://github.com/msurguy/cnc-text-tool">Source</a>)</p>
+            <FooterWithAbout />
           </div>
         </div>
       </div>
@@ -155,5 +156,30 @@ function DownloadButton() {
   const download = useEditorStore(s => s.download)
   return (
     <button className="btn btn-primary" style={{ minWidth: 180 }} onClick={download}>Download SVG</button>
+  )
+}
+
+function FooterWithAbout() {
+  const [aboutOpen, setAboutOpen] = useState(false)
+  return (
+    <>
+      <p>
+        Project by{' '}
+        <a target="_blank" rel="noreferrer" href="http://twitter.com/msurguy">@msurguy</a>
+        {' '}(
+        <a target="_blank" rel="noreferrer" href="http://github.com/msurguy/cnc-text-tool">Source</a>
+        {')'}
+        {' '}
+        <button
+          type="button"
+          onClick={() => setAboutOpen(true)}
+          title="About this tool"
+          style={{ background: 'none', border: 'none', color: '#0b5ed7', textDecoration: 'underline', cursor: 'pointer', padding: 0, marginLeft: 8 }}
+        >
+          About
+        </button>
+      </p>
+      <AboutModal open={aboutOpen} onClose={() => setAboutOpen(false)} />
+    </>
   )
 }
